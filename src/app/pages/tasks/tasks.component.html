@@ -1,0 +1,53 @@
+<h2>Gestión de Tareas</h2>
+
+<div style="margin-bottom:20px;">
+  <input [(ngModel)]="title" placeholder="Nueva tarea">
+  <button (click)="createTask()">Agregar</button>
+</div>
+
+<table border="1" width="700" cellpadding="8">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Tarea</th>
+<th>Estado</th>
+<th>Acciones</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr *ngFor="let t of tasks">
+
+<td>{{t.id}}</td>
+
+<td>
+<input [(ngModel)]="t.title">
+</td>
+
+<td>
+{{ t.completed ? 'Completada' : 'Pendiente' }}
+</td>
+
+<td>
+
+<button (click)="updateTask(t)">
+Guardar
+</button>
+
+<button (click)="toggleComplete(t)">
+{{ t.completed ? 'Desmarcar' : 'Completar' }}
+</button>
+
+<button (click)="deleteTask(t.id)">
+Eliminar
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
